@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Антонова Алина — студентка экономического факультета СПбГУ</title>
+<meta name="description" content="Визитка: Антонова Алина, студентка экономического факультета СПбГУ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e8eef3;
+    --ink: #13233a;
+    --muted: #4d5f75;
+    --line: #13233a;
+    --accent: #0f7b6c;
+    --paper: #f7fafc;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Golos Text", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+  .card {
+    width: 100%;
+    max-width: 720px;
+    background: var(--paper);
+    border: 2px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(28px, 6vw, 56px);
+    box-shadow: 10px 10px 0 var(--ink);
+  }
+  h1 {
+    font-family: "Unbounded", "Arial Black", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: clamp(34px, 8vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+  }
+  .chart {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 0 28px;
+  }
+  .chart .axis { stroke: var(--muted); stroke-width: 1.5; opacity: .5; }
+  .chart .trend {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 700;
+    stroke-dashoffset: 700;
+    animation: draw 1.6s ease-out .2s forwards;
+  }
+  .chart .dot { fill: var(--accent); opacity: 0; animation: pop .3s ease-out 1.6s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes pop { to { opacity: 1; } }
+  .role { margin: 0; font-size: 20px; font-weight: 500; }
+  .place { margin: 4px 0 32px; color: var(--muted); }
+  .link {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--paper);
+    background: var(--ink);
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 4px;
+    transition: background .15s;
+  }
+  .link:hover { background: var(--accent); }
+  .link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    .chart .trend { animation: none; stroke-dashoffset: 0; }
+    .chart .dot { animation: none; opacity: 1; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 17px; padding: 16px; }
+    .card { box-shadow: 6px 6px 0 var(--ink); }
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <h1>Антонова Алина</h1>
+
+    <svg class="chart" viewBox="0 0 600 90" role="img" aria-label="Растущая линия графика">
+      <line class="axis" x1="0" y1="85" x2="600" y2="85"/>
+      <polyline class="trend" points="0,70 70,60 130,66 200,44 270,50 340,30 410,36 480,18 540,24 590,8"/>
+      <circle class="dot" cx="590" cy="8" r="6"/>
+    </svg>
+
+    <p class="role">Студентка экономического факультета</p>
+    <p class="place">Санкт-Петербургский государственный университет</p>
+
+    <a class="link" href="https://github.com/LinaArll/" target="_blank" rel="noopener">Мой GitHub</a>
+  </main>
+</body>
+</html>
